@@ -11,23 +11,29 @@
 <script type="text/javascript">
   var iframe = document.createElement('iframe');
   iframe.src = 'http://www.yf.org/data.html';
-  // iframe.style.display = 'none';
+  iframe.style.display = 'none';
   document.body.appendChild(iframe);
 
   iframe.onload = function() {
-    // 读取数据
-    var data = iframe.contentWindow.name;
-    alert(data);    //弹出'I was there!'
+    try {
+      // 读取数据
+      var data = iframe.contentWindow.name;
+      console.log(iframe.contentWindow); // Blocked a frame with origin "http://www.yf.cn" from accessing a cross-origin frame.
+      alert(data); //弹出'I was there!'
 
-    // 获取数据3秒后销毁这个iframe，释放内存；这也保证了安全（不被其他域frame js访问）。
-    iframe.contentWindow.document.write('');
-    iframe.contentWindow.close();
-    document.body.removeChild(iframe);
+      // 获取数据3秒后销毁这个iframe，释放内存；这也保证了安全（不被其他域frame js访问）。
+      // iframe.contentWindow.document.write('');
+      // iframe.contentWindow.close();
+      // document.body.removeChild(iframe);
+    } catch(e) {
+      console.log(JSON.stringify(e));
+      alert(e.stack);
+    }
   };
 
   function fetchData() {
     // 设置的代理文件
-    // iframe.contentWindow.location = 'http://www.yf.cn/proxy.html';
+    iframe.contentWindow.location = 'http://www.yf.cn/proxy.html';
   }
 
 </script>
