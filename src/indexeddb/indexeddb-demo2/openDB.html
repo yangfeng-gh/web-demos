@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>indexedDB 的基本用法</title>
+</head>
+<body>
+
+<h3>indexedDB 的基本用法 - openDB</h3>
+
+<script>
+    function openDB(name, version) {
+        var version = version || 1;
+        var request = window.indexedDB.open(name, version);
+        request.onerror = function (e) {
+            console.log(e.currentTarget.error.message);
+        };
+        request.onsuccess = function (e) {
+            myDB.db = e.target.result;
+        };
+        request.onupgradeneeded = function (e) {
+            console.log('DB version changed to ' + version);
+        };
+    }
+
+    function closeDB(db) {
+        db.close();
+    }
+
+    function deleteDB(name) {
+        indexedDB.deleteDatabase(name);
+    }
+
+    var myDB = {
+        name: 'test',
+        version: 3,
+        db: null
+    };
+
+    openDB(myDB.name, myDB.version);
+
+    setTimeout(function () {
+        closeDB(myDB.db);
+        deleteDB(myDB.name);
+    }, 3000);
+</script>
+</body>
+</html>

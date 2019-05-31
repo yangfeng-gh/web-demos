@@ -1,0 +1,20 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>yf.com/cross-domain.html</title>
+</head>
+<body>
+<script>
+  // cross-domain和index在同一域名下可以相互通信
+  window.addEventListener('hashchange', locationHashChange, false);
+
+  function locationHashChange() {
+    console.log(location.href); // http://www.yf.com/cross-domain.html#mainred
+    // 触发index.html页面的hashchage事件
+    parent.parent.location.hash = self.location.hash.substring(1);
+  }
+</script>
+</body>
+</html>

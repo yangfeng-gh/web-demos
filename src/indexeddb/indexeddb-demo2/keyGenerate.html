@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>indexedDB 的基本用法</title>
+</head>
+<body>
+
+<h3>indexedDB 的基本用法 - keyGenerator</h3>
+<button onclick="add()">添加数据</button>
+<button onclick="destroyDB()">删除数据库</button>
+
+<script>
+    var indexedDB =
+        window.indexedDB ||
+        window.webkitIndexedDB ||
+        window.mozIndexedDB ||
+        window.msIndexedDB;
+
+    if (!indexedDB) {
+        console.log('你的浏览器不支持IndexedDB');
+    }
+
+
+    function openDB(name, version) {
+        var version = version || 1;
+        var request = indexedDB.open(name, version);
+        request.onerror = function (e) {
+            console.log(e.currentTarget.error.message);
+        };
+        request.onsuccess = function (e) {
+            myDB.db = e.target.result;
+        };
+        request.onupgradeneeded = function (e) {
+            var db = e.target.result;
+            if (!db.objectStoreNames.contains('students')) {
+                db.createObjectStore('students', { autoIncrement: true });
+            }
+            console.log('DB version changed to ' + version);
+        };
+    }
+
+    function closeDB(db) {
+        db.close();
+    }
+
+    function deleteDB(name) {
+        indexedDB.deleteDatabase(name);
+    }
+
+    var myDB = {
+        name: 'test',
+        version: 3,
+        db: null
+    };
+    openDB(myDB.name, myDB.version);
+
+    function addData(db, storeName, data) {
+        var transaction = db.transaction(storeName, 'readwrite');
+        var store = transaction.objectStore(storeName);
+        for (var i = 0; i < data.length; i++) {
+            store.add(data[i]);
+        }
+        console.log(store);
+    }
+
+    function add() {
+        var students = [{
+            id: 1001,
+            name: "Byron",
+            age: 24
+        }, {
+            id: 1002,
+            name: "Frank",
+            age: 30
+        }, {
+            id: 1003,
+            name: "Aaron",
+            age: 26
+        }];
+        addData(myDB.db, 'students', students);
+    }
+
+    function destroyDB() {
+        closeDB(myDB.db);
+        deleteDB(myDB.name);
+    }
+</script>
+</body>
+</html>

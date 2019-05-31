@@ -1,0 +1,36 @@
+<html>
+<meta charset="UTF-8"/>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>yf.com/index.html</title>
+</head>
+
+<body onhashchange="locationHashChange();">
+
+<h1>通过IFRAME 和 location.hash 获取跨域数据</h1>
+引入header.html
+<iframe id="iframe" src="http://www.yf.net/header.html"></iframe>
+<input type="button" onClick="changeColor()" value="change color" id="btn"/>
+<a href="http://www.yf.com">reset</a>
+
+<script>
+  var iframe = document.getElementById('iframe');
+
+  // cross-domain.html的hashchange事件中给此页面设置了hash值为mainred，从而触发了此页面的hashchange事件
+  function locationHashChange() {
+    switch (location.hash) {
+      case '#mainred':
+        document.getElementById("btn").style.color = "red"; // 设置change color按钮颜色为red
+        break;
+    }
+  }
+
+  function changeColor() {
+    iframe.src = 'http://www.yf.net/header.html#red'; // 触发header.html页面的hashchange事件
+  }
+</script>
+
+</body>
+</html>

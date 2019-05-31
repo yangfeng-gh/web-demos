@@ -1,0 +1,33 @@
+<html>
+<meta charset="UTF-8"/>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>yf.net/header.html</title>
+</head>
+<body>
+<a href="javascript:;" id="btn">点击改变主页面按钮颜色</a>
+<iframe src="http://www.yf.com/cross-domain.html" width="" height="" id="cdiframe"
+        style="display: none;"></iframe>
+<script>
+  // console.log(parent.name);
+  // Blocked yf.org frame with origin "http://www.yf.net" from accessing yf.org cross-origin frame
+
+  function locationHashChanged() {
+    switch (location.hash) {
+      case '#red':
+        document.getElementById("btn").style.color = "red";
+        break;
+    }
+  }
+
+  window.onhashchange = locationHashChanged;
+
+  document.getElementById("btn").onclick = function () {
+    // 触发cross-domain页面的hashchange事件
+    document.getElementById("cdiframe").src = "http://www.yf.com/cross-domain.html#mainred";
+  };
+</script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>www.yf.cn/app.html</title>
+</head>
+<body>
+<h3>www.yf.cn/app.html</h3>
+<button onclick="fetchData()">获取数据</button>
+<!--监听iframe的onload事件，在此事件中设置这个iframe的src指向本地域的代理文件（代理文件和应用页面在同一域下，所以可以相互通信）。-->
+<script type="text/javascript">
+  var iframe = document.createElement('iframe');
+  iframe.src = 'http://www.yf.org/data.html';
+  // iframe.style.display = 'none';
+  document.body.appendChild(iframe);
+
+  iframe.onload = function() {
+    // 读取数据
+    var data = iframe.contentWindow.name;
+    alert(data);    //弹出'I was there!'
+
+    // 获取数据3秒后销毁这个iframe，释放内存；这也保证了安全（不被其他域frame js访问）。
+    iframe.contentWindow.document.write('');
+    iframe.contentWindow.close();
+    document.body.removeChild(iframe);
+  };
+
+  function fetchData() {
+    // 设置的代理文件
+    // iframe.contentWindow.location = 'http://www.yf.cn/proxy.html';
+  }
+
+</script>
+
+
+</body>
+</html>
