@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>负margin在Tab选项卡中的应用</title>
+<style type="text/css">
+    .demoTab {
+        width: 400px;
+        font: 14px/1.5 Microsoft YaHei, verdana, Helvetica, Arial, sans-serif;
+    }
+
+    .demoTab .demoTabHd {
+        margin-bottom: -1px;
+        border: 1px solid #6C92AD;
+        border-bottom: none;
+        background: #EAF0FD;
+    }
+
+    .demoTab .demoTabNav {
+        height: 28px;
+        overflow: hidden;
+        *zoom: 1;
+    }
+
+    .demoTab .demoTabList {
+        float: left;
+        margin-left: -1px;
+        padding: 0 22px;
+        line-height: 28px;
+        border-left: 1px solid #6C92AD;
+        border-right: 1px solid #6C92AD;
+        font-weight: bold;
+        color: #005590;
+        text-align: center;
+        cursor: pointer;
+    }
+
+    .demoTab .demoTabList.current {
+        position: relative;
+        background: #fff;
+    }
+
+    .demoTab .demoTabBd {
+        border: 1px solid #6C92AD;
+    }
+
+    .demoTab .demoTabBd .roundBox {
+        padding: 15px;
+    }
+
+    .demoTab .demoTabContent {
+        display: none;
+    }
+
+    .demoTab .demoTabContent.current {
+        display: block;
+    }
+</style>
+</head>
+<body>
+<div id="demoTab" class="demoTab">
+    <div class="demoTabHd">
+        <ul class="demoTabNav clearfix">
+            <li class="demoTabList current">前端</li>
+            <li class="demoTabList">实战</li>
+            <li class="demoTabList">交互</li>
+            <li class="demoTabList">优化</li>
+        </ul>
+    </div>
+    <div class="demoTabBd">
+        <div class="roundBox">
+            <div class="demoTabContent current">这是第一个选项卡的内容。</div>
+            <div class="demoTabContent">这是第二个选项卡的内容。</div>
+            <div class="demoTabContent">这是第三个选项卡的内容。</div>
+            <div class="demoTabContent">这是第四个选项卡的内容。</div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

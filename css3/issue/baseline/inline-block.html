@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>inline-block元素的baseline</title>
+    <style type="text/css">
+        .ctn-block{
+            display: block;
+            background-color: #bbb;
+            line-height: 200px;
+            font-size: 50px;
+        }
+        .ctn-block .child1{
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+            margin:10px 0;
+            vertical-align: baseline;
+            background-color: aliceblue;
+        }
+    </style>
+</head>
+<body>
+<div class="ctn-block">
+    <div class="child1"></div>
+    <span>Gg</span>
+</div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>深入理解css中的vertical-align属性</title>
+    <style>
+        h3 {
+            color: red;
+        }
+        div {
+            width: 200px;
+            height: 200px;
+            border: 1px solid #ccc;
+            display: inline-block;
+        }
+
+        .align {
+            vertical-align: top;
+        }
+    </style>
+</head>
+<body>
+
+<h3>两个div 都设置 display：inline-block，正常显示；但是在第二个div中加一个块级元素或者内联元素，显示就变了个样，为什么？</h3>
+<div>1</div>
+<div>2</div>
+<br>
+<div></div>
+<div>
+    <span>加一个块级元素或者内联元素</span>
+</div>
+<h3>解决方案就是给第二个div加上：vertical-align:top。</h3>
+<div></div>
+<div class="align">
+    <span>加一个块级元素或者内联元素,并设置vertical-align: top</span>
+</div>
+
+</body>
+</body>
+</html>

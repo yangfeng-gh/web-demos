@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>bfc4</title>
+    <style>
+        .wrapper {
+            width: 200px;
+            border: 1px solid blue;
+            /*overflow:hidden;*/
+            display: flex;
+            flex-flow: row wrap;
+        }
+
+        .content {
+            width: 150px;
+            height: 100px;
+            background: red;
+            float: left;
+            margin: 50px 0;
+        }
+    </style>
+</head>
+<body>
+<div class="wrapper">
+    <p class="content"></p>
+    <p class="content"></p>
+</div>
+
+<p>依据BFC布局规则第六条：</p>
+<p>计算BFC的高度时，浮动元素的高度也参与计算。</p>
+</body>
+</html>

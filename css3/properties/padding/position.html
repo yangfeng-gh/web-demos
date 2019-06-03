@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>测试padding值对position定位的影响</title>
+    <style>
+        .wrapper {
+            position: relative;
+            width: 800px;
+            height: 600px;
+            background: rgba(100, 100, 100, .5);
+            padding-top: 20px;
+        }
+        .col {
+            float: left;
+            width: 200px;
+            height: 300px;
+            background: pink;
+        }
+        .main {
+            width: 200px;
+            height: 300px;
+            background: yellow;
+            position: absolute;
+            top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="main"></div>
+        <div class="left col"></div>
+        <div class="right col"></div>
+    </div>
+    <p>可见包含元素的padding值不会影响定位元素的参考点</p>
+</body>
+</html>

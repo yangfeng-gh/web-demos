@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="utf-8" />
+    <title>visibility_CSS参考手册_web前端开发参考手册系列</title>
+    <meta name="author" content="Joy Du(飘零雾雨), dooyoe@gmail.com, www.doyoe.com" />
+    <style>
+        .test {
+            visibility: hidden;
+        }
+    </style>
+</head>
+<body>
+<div id="hide" class="test">我不会出现在屏幕上</div>
+<div>具有visibility: hidden属性的元素会被隐藏，但是该元素占据页面的位置会保留</div>
+<button id="btn">显示/隐藏</button>
+<script>
+    window.onload = function() {
+        document.querySelector('#btn').addEventListener('click', function() {
+            var classList = document.querySelector('#hide').classList;
+            if ([].indexOf.call(classList, 'test') > -1) {
+                document.querySelector('#hide').classList.remove('test')
+            } else {
+                document.querySelector('#hide').classList.add('test')
+            }
+        })
+    }
+</script>
+</body>
+</html>

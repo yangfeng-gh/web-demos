@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vertical:middle原理配合after伪元素实现</title>
+
+    <style type="text/css">
+        .pic_box {
+            border: 1px solid red;
+            width: 600px;
+            height: 600px;
+            text-align: center;
+            overflow: hidden;
+            font-size: 0;
+        }
+
+        .pic_box::after {
+            content: "";
+            height: 100%;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        img {
+            vertical-align: middle;
+        }
+    </style>
+
+</head>
+<body>
+
+<h3>为父元素设定一个伪元素：：after,其高度为父元素的高度，display:inline-block,将其设定为vertical-align:middle即可撑开line box，同时line box的baseline为父元素高度一半的位置。然后设定子元素vertical-align:middle，即可实现居中。</h3>
+<div class="pic_box">
+    <img src="../assets/issue-align-01.png"/>
+</div>
+
+</body>
+</html>

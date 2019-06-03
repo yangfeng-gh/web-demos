@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>绝对定位布局</title>
+    <style>
+        /* 以下为简码，仅保留关键部分 */
+        html, body {
+            margin: 0;
+            height: 100%;
+        }
+        header,
+        footer {
+            height: 50px;
+            width: 100%;
+            background: pink;
+            position: fixed;
+        }
+
+        header {
+            top: 0;
+        }
+
+        footer {
+            bottom: 0;
+        }
+
+        .wrapper {
+            position: relative;
+            height: 100%;
+            margin: 50px 0;
+        }
+
+        .main {
+            height: 100%;
+            margin: 0 100px;
+            background: red;
+        }
+
+        .left,
+        .right {
+            width: 100px;
+            height: 100%;
+            position: absolute;
+            top: 0;
+        }
+
+        .left {
+            left: 0;
+            background: green;
+            /*height: 300px;*/
+        }
+
+        .right {
+            right: 0;
+            background: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <header>header</header>
+    <section class="wrapper">
+        <section class="col main">
+            main 需要比left right高度大才能撑起页面，否则footer会与left,right重叠，因为left，right是绝对定位，脱离了文档流
+        </section>
+        <!--<aside class="col left">left</aside>-->
+        <!--<aside class="col right">right</aside>-->
+    </section>
+    <footer>footer</footer>
+</body>
+
+</html>

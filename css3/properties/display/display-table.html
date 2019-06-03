@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>display table</title>
+    <style>
+        header, footer {
+            height: 50px;
+            background: lightskyblue;
+        }
+        .wrapper {
+            /*display: table;*/
+            overflow: hidden;
+            background: cyan;
+            padding: 0 300px;
+        }
+        .main {
+            width: 100%;
+            background: blue;
+        }
+        .col {
+            float: left;
+            height: 300px;
+            position: relative;
+        }
+        .left {
+            width: 300px;
+            background: olive;
+            margin-left: -100%;
+            left: -300px;
+        }
+        .right {
+            width: 300px;
+            background: orchid;
+            /*left: -300px;*/
+            margin-left: -300px;
+        }
+    </style>
+</head>
+<body>
+<header>header</header>
+<section class="wrapper">
+    <!-- 浏览器渲染引擎构建是异步的，将<section>main</section>部分提前即可优先渲染 -->
+    <section class="col main">main</section>
+    <aside class="col left">left</aside>
+    <aside class="col right">right</aside>
+</section>
+<footer>footer</footer>
+</body>
+</html>

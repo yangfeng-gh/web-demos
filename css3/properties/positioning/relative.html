@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>position-relative</title>
+    <style>
+        html, body {
+            margin: 0;
+        }
+        .relative1 {
+            width: 400px;
+            height: 200px;
+            background: cyan;
+            position: relative;
+            left: 20px;
+            top: 50px;
+        }
+
+        .relative2 {
+            width: 200px;
+            height: 100px;
+            background: yellow;
+            position: relative;
+            left: 20px;
+            top: 50px;
+        }
+
+        .static1 {
+            position: static;
+            width: 400px;
+            height: 200px;
+            background: magenta;
+        }
+    </style>
+</head>
+<body>
+<div class="relative1">
+    relative1
+    <div class="relative2">
+        relative2
+    </div>
+</div>
+<div class="static1">
+    static1
+</div>
+</body>
+</html>

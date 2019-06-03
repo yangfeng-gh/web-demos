@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CSS3的新版弹性盒子实现水平居中方法</title>
+    <style>
+        html, body {
+            margin: 0;
+        }
+
+        .pagination {
+            display: flex; /* flex：将对象作为弹性伸缩盒显示。（伸缩盒最新版本) */
+            flex-direction: row; /* 默认值 */
+            justify-content: center;
+        }
+
+        .pagination ul {
+            border: 0;
+            padding: 0;
+        }
+
+        .pagination li {
+            list-style-type: none;
+            line-height: 25px;
+            margin: 0 5px;
+            float: left;
+        }
+    </style>
+</head>
+<body>
+
+<div class="pagination">
+    <ul>
+        <li><a href="#">Prev</a></li>
+        <li><a href="#">1</a></li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><a href="#">4</a></li>
+        <li><a href="#">5</a></li>
+        <li><a href="#">Next</a></li>
+    </ul>
+</div>
+</body>
+</html>

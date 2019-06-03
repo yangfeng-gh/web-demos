@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vertical-align基于line box的不同取值</title>
+    <style type="text/css">
+        .ctn-block{
+            display: block;
+            background-color: #bbb;
+            line-height: 200px;
+            font-size: 50px;
+        }
+        .ctn-block .child1{
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+            margin:10px 0;
+            vertical-align: top;
+            background-color: aliceblue;
+        }
+        .big {
+            display: inline-block;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+<div class="ctn-block">
+    <div class="child1"></div>
+    <div class="big"></div>
+</div>
+</body>
+</html>

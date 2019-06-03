@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>使用绝对定位和负外边距对块级元素进行垂直居中</title>
+    <style>
+        #box {
+            width: 300px;
+            height: 300px;
+            background: #ddd;
+            position: relative;
+        }
+        #child {
+            width: 50%;
+            height: 30%;
+            background: orange;
+            position: absolute;
+            top: 50%;
+            margin: -15% 0 0 0;
+            line-height: 100px;
+        }
+    </style>
+</head>
+<body>
+
+<h3>这种方式的原理实质上和前两种相同。补充的一点是：margin的取值也可以是百分比，这时这个值规定了该元素基于父元素尺寸的百分比，可以根据实际的使用场景来决定是用具体的数值还是用百分比。</h3>
+<div id="box">
+    <div id="child">我是测试DIV</div>
+</div>
+
+</body>
+</html>

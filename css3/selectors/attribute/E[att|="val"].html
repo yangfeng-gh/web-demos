@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="utf-8"/>
+    <title>属性选择符 E[att|="val"]_CSS参考手册_web前端开发参考手册系列</title>
+    <meta name="author" content="Joy Du(飘零雾雨), dooyoe@gmail.com, www.doyoe.com"/>
+    <style>
+        li[class|="test3"] {
+            color: #f00;
+        }
+    </style>
+</head>
+<body>
+<h3>选择具有att属性，其值是以val开头并用连接符"-"分隔的字符串的E元素；如果值仅为val，也将被选择。</h3>
+<p>这样理解会更简单：如果元素E拥有att属性，并且值为val，或者值是以val-开头的，那么E将会被选择。</p>
+
+<ul>
+    <li class="test1-abc">列表项目</li>
+    <li class="test2-abc">列表项目</li>
+    <li class="test3">列表项目</li>
+    <li class="test3-abc">列表项目</li>
+    <li class="test4-abc">列表项目</li>
+    <li class="test5-abc">列表项目</li>
+    <li class="test6-abc">列表项目</li>
+</ul>
+</body>
+</html>
+

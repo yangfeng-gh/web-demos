@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="utf-8"/>
+    <title>word-break_CSS参考手册_web前端开发参考手册系列</title>
+    <meta name="author" content="Joy Du(飘零雾雨), dooyoe@gmail.com, www.doyoe.com"/>
+    <style>
+        .test p {
+            width: 180px;
+            border: 1px solid #000;
+            background-color: #eee;
+        }
+
+        .normal p {
+            word-break: normal;
+        }
+
+        .break-all p {
+            word-break: break-all;
+        }
+
+        .keep-all p {
+            word-break: keep-all;
+        }
+    </style>
+</head>
+<body>
+<ul class="test">
+    <li class="normal">
+        <strong>normal：</strong>
+        <p>this is a new record congratulation 英文长单词不截断换行中文换行</p>
+    </li>
+    <li class="break-all">
+        <strong>break-word：</strong>
+        <p>this is a new record congratulation 英文长单词截断换行中文换行</p>
+    </li>
+    <li class="keep-all">
+        <strong>keep-all：</strong>
+        <p>this is a new record congratulation  英文长单词不截断换行中文长句子不截断换行</p>
+    </li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>bfc</title>
+    <style>
+        .top {
+            width: 100px;
+            height: 100px;
+            background: red;
+            float: left;
+        }
+
+        .bottom {
+            width: 200px;
+            height: 200px;
+            background: blue;
+        }
+    </style>
+</head>
+<body>
+
+<div class="top">top</div>
+<div class="bottom">bottom</div>
+
+<br>
+<div>
+    <p>依据BFC布局规则第四条：</p>
+    <p>BFC的区域不会与float box重叠。</p>
+    <p>看代码和效果图，可以看出，这次的代码比上面的代码多了一行overflow:hidden</p>
+    <p>用这行代码触发新的BFC后，由于这个新的BFC不会与浮动的top重叠，所以bottom的位置改变了</p>
+</div>
+
+</body>
+</html>

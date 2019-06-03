@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>float-left</title>
+    <style>
+        html, body {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+        }
+
+        .div1 {
+            width: 100px;
+            height: 100px;
+            background: red;
+            float: left;
+        }
+        .div2{
+            width: 120px;
+            height: 120px;
+            background: green;
+            /*float: left;*/
+        }
+        .div3 {
+            width: 140px;
+            height: 140px;
+            background: blue;
+            float: left;
+        }
+        .div4 {
+            width: 160px;
+            height: 160px;
+            background: cyan;
+            clear: left; /* 只有当上一个元素左浮动，才能清浮动 */
+        }
+        .div5 {
+            width: 180px;
+            height: 180px;
+            background: magenta;
+            float: right;
+        }
+        .div6 {
+            width: 200px;
+            height: 200px;
+            background: yellow;
+            clear: right; /* 只有当上一个元素右浮动，才能清浮动 */
+        }
+        .div7 {
+            width: 200px;
+            height: 200px;
+            background: yellow;
+            float: left;
+        }
+        .div6 {
+            width: 200px;
+            height: 200px;
+            background: yellow;
+            clear: both; /* 不管上一个元素是左浮动还是右浮动，都可以清除 */
+        }
+    </style>
+</head>
+
+<body>
+<div class="div1">1</div>
+<div class="div2">22</div>
+<div class="div3">333</div>
+<div class="div4">4444</div>
+<div class="div5">55555</div>
+<div class="div6">666666</div>
+<div class="div7">7777777</div>
+<div class="div8">88888888</div>
+</body>
+</html>

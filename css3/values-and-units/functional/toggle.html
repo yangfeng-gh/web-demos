@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="utf-8" />
+    <title>toggle()函数_CSS参考手册_web前端开发参考手册系列</title>
+    <meta name="author" content="Joy Du(飘零雾雨), dooyoe@gmail.com, www.doyoe.com" />
+    <style>
+        ul {
+            list-style-type: toggle(decimal, disc, circle, square);
+        }
+        em {
+            font-style: toggle(italic, normal);
+        }
+    </style>
+</head>
+<body>
+<h3>所有主流浏览器都不支持</h3>
+<h3>允许子孙元素使用取值序列中的值循环替换继承而来的值。</h3>
+<ul>
+    <li>
+        1
+        <ul>
+            <li>
+                1.1
+                <ul>
+                    <li>
+                        1.1.1
+                        <ul>
+                            <li>1.1.1.1</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li>
+        2
+        <ul>
+            <li>
+                2.2
+                <ul>
+                    <li>
+                        2.2.2
+                        <ul>
+                            <li>2.2.2.2</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+</ul>
+
+<em>
+    italic
+    <em>normal</em>
+</em>
+<em>
+    italic
+    <em>normal</em>
+</em>
+</body>
+</html>

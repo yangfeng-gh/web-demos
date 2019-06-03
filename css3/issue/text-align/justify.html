@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>使用text-align: justify</title>
+    <style>
+        .justify {
+            width: 200px;
+            background: aliceblue;
+            text-align: justify;
+            text-align-last:justify;/* ie9*/
+            -moz-text-align-last:justify;/*ff*/
+            -webkit-text-align-last:justify;/*chrome 20+*/
+            text-justify:distribute-all-lines;/*ie6-8*/
+        }
+        /* 解决Chrome23, Safari5.1.7, Opera12.11不支持text-align-last的问题 */
+        .justify:after {
+            display: inline-block;
+            content: '';
+            overflow: hidden;
+            width: 100%;
+            height: 0;
+        }
+    </style>
+</head>
+<body>
+
+<h3>需要注意的是：</h3>
+<p>这个方法在ie中需要在文本之间添加空格|换行符|制表符或者添加样式{text-justify: inter-ideograph;}才能起作用。</p>
+<p>Chrome23, Safari5.1.7, Opera12.11不支持text-align-last</p>
+<p>这就意味着样式不会对元素内的最后一行文本（当仅有一行文本时，既是第一行也是最后一行）以及被强制打断的行起作用，但会处理除此之外的其它行。</p>
+<p>为了解决这个问题，可以利用伪元素来使单行文本变成多行文本</p>
+
+<div class="justify">
+    <p>开心</p>
+    <p>不开心</p>
+    <p>很不开心</p>
+</div>
+
+</body>
+</html>

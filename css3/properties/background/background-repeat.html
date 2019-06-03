@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="utf-8" />
+    <title>background-repeat_CSS参考手册_web前端开发参考手册系列</title>
+    <meta name="author" content="Joy Du(飘零雾雨), dooyoe@gmail.com, www.doyoe.com" />
+    <style>
+        .repeat-x {
+            padding-top: 200px;
+            background-image: url(images/bg05.jpg);
+            background-repeat: repeat-x;
+            color: red;
+        }
+
+        .repeat-y {
+            padding-top: 500px;
+            background-image: url(images/bg05.jpg);
+            background-repeat: repeat-y;
+            color: red;
+        }
+
+        .repeat {
+            padding-top: 500px;
+            background-image: url(images/bg05.jpg);
+            background-repeat: repeat;
+            color: red;
+        }
+
+        .no-repeat {
+            padding-top: 200px;
+            background-image: url(images/bg05.jpg);
+            background-repeat: no-repeat;
+            color: red;
+        }
+
+        .round {
+            padding-top: 500px;
+            background-image: url(images/bg05.jpg);
+            background-repeat: round;
+            color: red;
+        }
+
+        .space {
+            padding-top: 500px;
+            background-image: url(images/bg05.jpg);
+            background-repeat: space;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<div class="repeat-x">repeat-x：背景图像在横向上平铺</div>
+<br>
+<div class="repeat-y">repeat-y：背景图像在纵向上平铺</div>
+<br>
+<div class="repeat">repeat：背景图像在横向和纵向平铺</div>
+<br>
+<div class="no-repeat">no-repeat：背景图像不平铺</div>
+<br>
+<div class="round">round：当背景图像不能以整数次平铺时，会根据情况缩放图像。（CSS3）</div>
+<br>
+<div class="space">space：当背景图像不能以整数次平铺时，会用空白间隙填充在图像周围。（CSS3）</div>
+</body>
+</html>

@@ -1,0 +1,13 @@
+.clearfix2 {
+    zoom: 1;
+}
+.clearfix2:before, .clearfix2:after {
+     content: "";
+     display: table;
+ }
+.clearfix2:after {
+     clear: both;
+     visibility: hidden;
+     font-size: 0;
+     height: 0;
+ }

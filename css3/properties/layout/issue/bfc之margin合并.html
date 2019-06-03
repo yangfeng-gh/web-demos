@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>bfc2</title>
+    <style>
+        .top {
+            width:100px;
+            height:100px;
+            background:red;
+            margin:50px;
+        }
+        .bottom {
+            width:100px;
+            height:100px;
+            background:blue;
+            margin:20px;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <div class="top">上</div>
+</div>
+<div class="bottom">下</div>
+<p>虽然红色 和 蓝色 的 div 都有设置 margin ，但是最后两个div 之间的距离并不是 50 + 20，而是取了较大者 50。</p>
+</body>
+</html>

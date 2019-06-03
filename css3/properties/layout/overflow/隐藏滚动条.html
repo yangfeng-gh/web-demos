@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>隐藏滚动条</title>
+    <style type="text/css">
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            background: red;
+            width: 300px;
+            height: 300px;
+            margin: 10px;
+            text-align: center;
+            font-size: 24px;
+            color: white;
+            line-height: 24;
+        }
+
+        ul {
+            list-style-type: none;
+            background: blue;
+            display: inline-block;
+            height: 400px;
+            overflow: auto;
+            margin-right: -15px; /* 划重点 */
+        }
+
+        div {
+            display: inline-block;
+            overflow: hidden; /* 划重点 */
+        }
+
+        body {
+            max-width: 400px;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <ul>
+        <li>往下滚</li>
+        <li>往下滚</li>
+        <li>往下滚</li>
+    </ul>
+</div>
+</body>
+</html>
