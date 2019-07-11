@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style type="text/css">
+    .matrix_box {
+      width: 150px;
+      height: 150px;
+      background-color: #a0b3d6;
+    }
+  </style>
+</head>
+<body>
+<div id="matrixBox1" class="matrix_box"></div>
+<p>
+  <button id="matrixButton1" type="button">点击应用matrix(1,0,0,1,30,30)</button>
+</p>
+<div id="matrixBox2" class="matrix_box"></div>
+<p>
+  <button id="matrixButton2" type="button">点击应用translate(30,30)</button>
+</p>
+<script>
+  (function () {
+    var $ = function (selector) {
+      return document.querySelector(selector);
+    };
+    var $css3Transform = function (element, value) {
+      var arrPriex = ["O", "Ms", "Moz", "Webkit", ""], length = arrPriex.length;
+      for (var i = 0; i < length; i += 1) {
+        element.style[arrPriex[i] + "Transform"] = value;
+      }
+    };
+
+    if ($ && window.addEventListener) {
+      $("#matrixButton1").addEventListener("click", function () {
+        $css3Transform($("#matrixBox1"), "matrix(1,0,0,1,30,30)");
+      });
+      $("#matrixButton2").addEventListener("click", function () {
+        $css3Transform($("#matrixBox2"), "translate(30px,30px)");
+      });
+    } else {
+      alert("目前浏览器不支持CSS3 transform, 请试试其他浏览器");
+    }
+  })();
+</script>
+</body>
+</html>

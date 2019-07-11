@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>table-cell实现</title>
+
+    <style type="text/css">
+        .pic_box {
+            display: table;
+            border: 1px solid red;
+            width: 308px;
+            height: 308px;
+            /*overflow: hidden;*/
+            text-align: center;
+        }
+
+        .pic_box a {
+            display: table-cell;
+            vertical-align: middle;
+            width: 300px;
+            height: 300px;
+        }
+    </style>
+
+</head>
+<body>
+
+<h3>非常简单：容器设置display:table，img外嵌套一层&lt;span>或者&lt;a>标签，设置display:table-cell，再用vertical-align:middle搞定。</h3>
+<div class="pic_box">
+    <a href="#">
+        <img src="../../assets/issue-align-01.png"/>
+    </a>
+</div>
+
+</body>
+</html>

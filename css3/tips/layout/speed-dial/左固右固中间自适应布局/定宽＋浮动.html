@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .left {
+      float: left;
+      width: 100px;
+      border: 1px solid blue;
+      min-height: 500px;
+    }
+
+    .middle {
+      border: 1px solid blue;
+      min-height: 500px;
+      margin: 0 100px 0 100px;
+    }
+
+    .right {
+      width: 100px;
+      float: right;
+      border: 1px solid red;
+      min-height: 500px;
+    }
+  </style>
+</head>
+<body>
+左边div定宽+左浮动，右边div定宽+右浮动，中间div左边距等于左边div宽度，右边距为右边div宽度
+<div>
+  <div class='left'>
+  </div>
+  <div class='right'>
+  </div>
+  <div class='middle'>
+  </div>
+  （浮动元素放在前面）
+</div>
+</body>
+</html>

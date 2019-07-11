@@ -3364,7 +3364,7 @@ jQuery.support = (function( support ) {
 
 	// Make sure that element opacity exists
 	// (IE uses filter instead)
-	// Use a regex to work around a WebKit issue. See #5145
+	// Use a regex to work around a WebKit tips. See #5145
 	support.opacity = /^0.5/.test( a.style.opacity );
 
 	// Verify style float existence
@@ -4558,7 +4558,7 @@ if ( !getSetInput || !getSetAttribute ) {
 if ( !getSetAttribute ) {
 
 	// Use this for any attribute in IE6/7
-	// This fixes almost every IE6/7 issue
+	// This fixes almost every IE6/7 tips
 	nodeHook = {
 		set: function( elem, value, name ) {
 			// Set the existing or create a new attribute node
@@ -7996,7 +7996,7 @@ jQuery.extend({
 		jqXHR.error = jqXHR.fail;
 
 		// Remove hash character (#7531: and string promotion)
-		// Add protocol if not provided (#5866: IE7 issue with protocol-less urls)
+		// Add protocol if not provided (#5866: IE7 tips with protocol-less urls)
 		// Handle falsy url in the settings object (#10093: consistency with old signature)
 		// We also use the url parameter if available
 		s.url = ( ( url || s.url || ajaxLocation ) + "" ).replace( rhash, "" ).replace( rprotocol, ajaxLocParts[ 1 ] + "//" );
