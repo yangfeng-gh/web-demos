@@ -99,13 +99,13 @@ var
 	// The ready event handler
 	completed = function( event ) {
 
-		// readyState === "complete" is good enough for us to call the dom ready in oldIE
+		// readyState === "complete" is good enough for us to call the DOM ready in oldIE
 		if ( document.addEventListener || event.type === "load" || document.readyState === "complete" ) {
 			detach();
 			jQuery.ready();
 		}
 	},
-	// Clean-up method for dom ready events
+	// Clean-up method for DOM ready events
 	detach = function() {
 		if ( document.addEventListener ) {
 			document.removeEventListener( "DOMContentLoaded", completed, false );
@@ -963,7 +963,7 @@ jQuery.ready.promise = function( obj ) {
 							return setTimeout( doScrollCheck, 50 );
 						}
 
-						// detach all dom ready events
+						// detach all DOM ready events
 						detach();
 
 						// and execute any waiting functions

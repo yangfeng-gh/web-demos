@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>display: grid</title>
+  <style>
+    .wp {
+      border: 1px solid red;
+      width: 300px;
+      height: 300px;
+      display: grid;
+    }
+
+    .box {
+      background: green;
+      align-self: center;
+      justify-self: center;
+    }
+  </style>
+</head>
+<body>
+
+<p>css新出的网格布局，由于兼容性不太好，一直没太关注，通过grid也可以实现水平垂直居中</p>
+
+<div class="wp">
+  <div class="box">123123</div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>line-height</title>
+  <style>
+    .wp {
+      border: 1px solid red;
+      width: 300px;
+      height: 300px;
+      line-height: 300px;
+      text-align: center;
+      font-size: 0px;
+    }
+
+    .box {
+      background: green;
+      font-size: 16px;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: initial;
+      text-align: left; /* 修正文字 */
+    }
+  </style>
+</head>
+<body>
+<div class="wp">
+  <!-- 不需要子元素固定宽高 -->
+  <div class="box">123123</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+<style>
+  #elem-container {
+    position: absolute;
+    left: 100px;
+    top: 200px;
+    height: 100px;
+  }
+</style>
+
+<div id="elem-container">dummy</div>
+<div id="output"></div>
+
+<script>
+  function getTheStyle() {
+    let elem = document.getElementById("elem-container");
+    let theCSSprop = window.getComputedStyle(elem, null).getPropertyValue("height");
+    document.getElementById("output").innerHTML = theCSSprop;
+  }
+
+  getTheStyle();
+
+  function dumpComputedStyles(elem, prop) {
+    let cs = window.getComputedStyle(elem, null);
+    if (prop) {
+      dump("    " + prop + " : " + cs.getPropertyValue(prop) + "\n");
+      return;
+    }
+
+    let len = cs.length;
+    for (var i = 0; i < len; i++) {
+      let style = cs[i];
+      dump("    " + style + " : " + cs.getPropertyValue(style) + "\n");
+    }
+  }
+</script>
+</body>
+</html>

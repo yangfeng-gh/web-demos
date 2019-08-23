@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>table</title>
+  <style>
+    .wp {
+      border: 1px solid red;
+      width: 300px;
+      height: 300px;
+      text-align: center; /* table单元格中的内容天然就是垂直居中的，只要添加一个水平居中属性就好了 */
+    }
+
+    .box {
+      background: green;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+
+<p>这种方法就是代码太冗余，而且也不是table的正确用法</p>
+
+<table>
+  <tbody>
+  <tr>
+    <td class="wp">
+      <div class="box">123123</div>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+</body>
+</html>

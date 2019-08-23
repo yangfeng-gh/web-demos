@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>transform: rotate</title>
+  <style>
+    .parent {
+      position: relative;
+      width: 500px;
+      height: 300px;
+    }
+
+    .child {
+      position: absolute;
+      top: 20px;
+      bottom: 20px;
+      width: 200px;
+      height: 150px;
+    }
+
+    .child1 {
+      background: pink;
+    }
+
+    .child2 {
+      background: #6C92AD;
+      transform-origin: left top; /* 如果提供两个，第一个用于横坐标，第二个用于纵坐标。如果只提供一个，该值将用于横坐标；纵坐标将默认为50%。*/
+      transform: rotate(-10deg);
+    }
+  </style>
+</head>
+<body>
+  <div class="parent">
+    <div class="child child1"></div>
+    <div class="child child2"></div>
+  </div>
+</body>
+</html>
