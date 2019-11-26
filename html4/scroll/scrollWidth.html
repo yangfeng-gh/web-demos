@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>scrollWidth, scrollHeight</title>
+    <style media="screen">
+        #div1 {
+            box-sizing: border-box;
+            width: 500px;
+            height: 100px;
+            overflow-y: auto;
+            border: 2px solid blue;
+            background: #ccc;
+
+        }
+    </style>
+    <script type="text/javascript">
+        window.onload = function() {
+            var div1 = document.getElementById('div1');
+            var scrollWidth = div1.scrollWidth;
+            var scrollHeight = div1.scrollHeight;
+            var clientWidth = div1.clientWidth;
+            var clientHeight = div1.clientHeight;
+            console.log(`clientWidth: ${clientWidth}, clientHeight: ${clientHeight}`);
+            console.log(`scrollWidth: ${scrollWidth}, scrollHeight: ${scrollHeight}`);
+        }
+    </script>
+</head>
+<body>
+    <div id="div1">
+        div1<br>
+        div1<br>
+        div1<br>
+        div1<br>
+        div1<br>
+        div1<br>
+        div1<br>
+    </div>
+</body>
+</html>

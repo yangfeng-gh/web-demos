@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>列车时刻表查询</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css"/>
+  <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+</head>
+<script>
+  /**
+   * HTML5 操作本地WebSQL数据库
+   * 作者：汪政
+   * 时间：2017/08/26 15：03：19
+   */
+  var datatable = null;
+  var db = openDatabase("MyData", "", "My Database", 1024 * 100);
+
+  //初始化函数方法
+  function init() {
+    datatable = document.getElementById("datatable");
+    showAllData();
+  }
+
+  //首先移除乱七八糟的东西
+  function removeAllData() {
+    for (var i = datatable.childNodes.length - 1; i >= 0; i--) {
+      datatable.removeChild(datatable.childNodes[i]);
+    }
+    var tr = document.createElement("tr");
+    var th1 = document.createElement("th");
+    var th2 = document.createElement("th");
+    var th3 = document.createElement("th");
+    th1.innerHTML = "姓名";
+    th2.innerHTML = "留言";
+    th3.innerHTML = "时间";
+    tr.appendChild(th1);
+    tr.appendChild(th2);
+    tr.appendChild(th3);
+    datatable.appendChild(tr);
+  }
+
+  //显示WebSQL中的数据
+  function showData(row) {
+    var tr = document.createElement("tr");
+    var td1 = document.createElement("td");
+    td1.innerHTML = row.name;
+    var td2 = document.createElement("td");
+    td2.innerHTML = row.message;
+    var td3 = document.createElement("td");
+    var t = new Date();
+    t.setTime(row.time);
+    td3.innerHTML = t.toLocaleDateString() + " " + t.toLocaleTimeString();
+    tr.appendChild(td1);
+    tr.appendChild(td2);
+    tr.appendChild(td3);
+    datatable.appendChild(tr);
+  }
+
+  //显示所有的数据
+  function showAllData() {
+    db.transaction(function (tx) {
+      tx.executeSql("CREATE TABLE IF NOT EXISTS MsgData(name TEXT,message TEXT,time INTEGER)", []);
+      tx.executeSql("SELECT * FROM MsgData", [], function (tx, rs) {
+        removeAllData();
+        for (var i = 0; i < rs.rows.length; i++) {
+          showData(rs.rows.item(i))
+        }
+      })
+    })
+  }
+
+  //添加数据
+  function addData(name, message, time) {
+    db.transaction(function (tx) {
+      tx.executeSql("INSERT INTO MsgData VALUES (?,?,?)", [name, message, time], function (tx, rs) {
+          alert("留言成功！");
+        },
+        function (tx, error) {
+          alert(error.source + "::" + error.message);
+        }
+      )
+    })
+  }
+
+  //调用
+  function saveData() {
+    var name = document.getElementById("name").value;
+    var memo = document.getElementById("memo").value;
+    var time = new Date().getTime();
+    addData(name, memo, time);
+    showAllData();
+  }
+</script>
+<body onload="init()">
+<div data-role="page" id="pageone">
+  <div data-role="header" data-position="fixed">
+    <h1>列车时刻表查询</h1>
+  </div>
+  <div data-role="main" class="ui-content">
+    <p align="center">请给我留言</p>
+    <table data-role="table" class="ui-responsive">
+      <thead>
+      <tr>
+        <th>姓名：</th>
+        <th>留言：</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td><input type="text" id="name"></td>
+        <td><input type="text" id="memo"></td>
+      </tr>
+      </tbody>
+    </table>
+    <button type="submit" onclick="saveData()">留言</button>
+    <table data-role="table" data-mode="" class="ui-responsive" id="datatable">
+      <!--这里是留言板的显示区域-->
+    </table>
+  </div>
+  <!--
+      作者：ceet@vip.qq.com
+      时间：2017-08-26
+      描述：底部TAB
+  -->
+  <div data-role="footer" data-position="fixed">
+    <div data-role="navbar">
+      <ul>
+        <li>
+          <a href="index.html#index" data-icon="grid" class="ui-btn-active">查询</a>
+        </li>
+        <li>
+          <a href="index.html#detail" data-rel="popup" data-icon="star">收藏</a>
+        </li>
+        <li>
+          <a href="test.html" data-icon="comment">给我留言</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!--收藏功能-->
+  <div data-role="popup" id="myPopup" class="ui-content" data-theme="b">
+    <a href="#" data-rel="back"
+       class="ui-btn ui-btn-a ui-corner-all ui-shadow ui-btn ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+    <p>收藏成功，暂且不做处理!.</p>
+    <p>请点击右上角有个关闭按钮</p>
+    <p><b>提示：</b> 你也可以点击弹窗的外部区域来关闭弹窗。</p>
+  </div>
+</div>
+</body>
+</html>

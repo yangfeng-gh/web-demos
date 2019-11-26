@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>li的高度自适应</title>
+    <style>
+        .main ul li{
+            width: 100%;
+            line-height: 100%;
+            border-bottom: 1px solid #333;
+            padding: 15px 0px;
+            background: #999;
+            text-align: center;
+            /*overflow:auto;*/
+        }
+
+        .main-left{
+            width: 30%;
+            float: left;
+            height: 40px;
+        }
+
+        .main-right{
+            width: 65%;
+            float: right;
+        }
+
+        .main-right p{
+            line-height: 1;
+        }
+    </style>
+</head>
+<body>
+<div class="main">
+    <ul>
+        <li>
+            <div class="main-left">23</div>
+            <div class="main-right">
+                <p>text1</p>
+                <p>text2</p>
+            </div>
+        </li>
+
+        <li><p>第二个button</p></li>
+        <li><p>第三个button</p></li>
+        <li><p>第四个button</p></li>
+    </ul>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>getComputedStyle</title>
+  <style media="screen">
+    .button {
+      height: 2em;
+      border: 0;
+      border-radius: .2em;
+      background-color: #34538b;
+      color: #fff;
+      font-size: 12px;
+      font-weight: bold;
+    }
+  </style>
+  <script type="text/javascript">
+    window.onload = function () {
+      var oButton = document.getElementById("button"),
+        oDetail = document.getElementById("detail");
+
+      if (oButton && oDetail) {
+        oButton.onclick = function () {
+          var oStyle = this.currentStyle ? this.currentStyle : window.getComputedStyle(this, false);
+
+          var key, html = '本按钮CSS属性名和属性值依次为(' + !!this.currentStyle + ')：<br>';
+          if (typeof oStyle === "object") {
+            for (key in oStyle) {
+              if (/^[a-z]/i.test(key) && oStyle[key]) {
+                html = html + '' + key + ":" + oStyle[key] + '<br>';
+              }
+            }
+          } else {
+            html += '无法获取CSS样式！';
+          }
+
+          oDetail.innerHTML = html;
+        };
+      }
+    }
+  </script>
+</head>
+
+<body>
+<input type="button" id="button" class="button" value="点击我，显示我"/>
+<p id="detail"></p>
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>getPropertyValue</title>
+    <style media="screen">
+        .button {
+            height: 2em;
+            border: 0;
+            border-radius: .2em;
+            background-color: #34538b;
+            color: #fff;
+            font-size: 12px;
+            font-weight: bold;
+        }
+    </style>
+    <script type="text/javascript">
+        window.onload = function() {
+            var oButton = document.getElementById("button");
+
+            if (oButton) {
+                oButton.onclick = function() {
+                    var oStyle = this.currentStyle ? this.currentStyle : window.getComputedStyle(this, null);
+                    if (oStyle.getPropertyValue) {
+                        alert("getPropertyValue下背景色：" + oStyle.getPropertyValue("background-color"));
+                    } else {
+                        alert("getAttribute下背景色：" + oStyle.getAttribute("backgroundColor"));
+                    }
+                };
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <input type="button" id="button" class="button" value="点击我，显示背景色" />
+</body>
+
+</html>

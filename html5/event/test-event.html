@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>无标题文档</title>
+  <style type="text/css">
+    #test {
+      background-color: #f00;
+    }
+  </style>
+  <script type="text/javascript" src="../../static/js/event.js"></script>
+  <script type="text/javascript">
+    bindEvent(window, 'load', function () {
+      var ul = document.getElementById("test");
+      var a = document.getElementById("baidu");
+
+      bindEvent(ul, 'click', function (e) {
+        alert("我是" + this + "元素, 你点击了我!");
+      });
+
+
+      bindEvent(a, 'click', function (e) {
+        alert("我是" + this + "，你点击了我！");
+      });
+
+    });
+  </script>
+</head>
+
+<body>
+<ul id="test">
+  <p class="t">Hello,world!</p>
+  <p>Hello,<a href="http://www.baidu.com" id="baidu">百度</a>!</p>
+  <li id="haha" class="t">afasdfsa</li>
+  <li>sfk</li>
+  <li class="t">sdklfajsfjk</li>
+  <li>end</li>
+  <li class="te">of</li>
+</ul>
+<ol id="test2">
+  <li class="t">附加的第一项</li>
+  <li class="t">附加的第二项</li>
+  <li class="t">附加的第三项</li>
+</ol>
+</body>
+</html>
