@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>input</title>
+</head>
+
+<body>
+  <meter value="2" min=0 max=10>2 out of 10</meter>
+  <progress value=22 max=100></progress>
+
+  <form action="">
+    <input list="cars">
+    <datalist id="cars">
+      <option value="BMW"></option>
+      <option value="Ford"></option>
+      <option value="BenZ"></option>
+      <option value="Volvo"></option>
+    </datalist>
+
+    username:
+    <input type="text" name="username" required> password:
+    <input type="text" name="password">
+    <keygen name="password" keytype="rsa">
+
+    <input type="number" name="n1"> +
+    <input type="number" name="n2"> =
+    <output name="result" onforminput="value=n1.valueAsNumber + n2.valueAsNumber"></output>
+
+    <br>
+
+    <input type="email" onchange="this.checkValidity();">
+  </form>
+
+</body>
+
+</html>
