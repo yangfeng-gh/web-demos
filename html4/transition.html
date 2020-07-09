@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>transition</title>
+    <style>
+        .trans_box {
+            padding: 20px;
+            background-color: #f0f3f9;
+            zoom:1;
+        }
+        .trans_list {
+            width: 10%;
+            height: 64px;
+            margin:10px 0;
+            background-color:#486AAA;
+            color:#fff;
+            text-align:center;
+        }
+
+        .trans_box:hover .trans_list {
+            margin-left:89%;
+            background-color:#beceeb;
+            color:#333;
+            -webkit-border-radius:25px;
+            -moz-border-radius:25px;
+            -o-border-radius:25px;
+            border-radius:25px;
+            -webkit-transform: rotate(360deg);
+            -moz-transform: rotate(360deg);
+            -o-transform: rotate(360deg);
+            transform: rotate(360deg);
+        }
+
+        .ease {
+            -webkit-transition: all 4s ease;
+            -moz-transition: all 4s ease;
+            -o-transition: all 4s ease;
+            transition: all 4s ease;
+        }
+        .ease_in {
+            -webkit-transition: all 4s ease-in;
+            -moz-transition: all 4s ease-in;
+            -o-transition: all 4s ease-in;
+            transition: all 4s ease-in;
+        }
+        .ease_out {
+            -webkit-transition: all 4s ease-out;
+            -moz-transition: all 4s ease-out;
+            -o-transition: all 4s ease-out;
+            transition: all 4s ease-out;
+        }
+        .ease_in_out {
+            -webkit-transition: all 4s ease-in-out;
+            -moz-transition: all 4s ease-in-out;
+            -o-transition: all 4s ease-in-out;
+            transition: all 4s ease-in-out;
+        }
+        .linear {
+            -webkit-transition: all 4s linear;
+            -moz-transition: all 4s linear;
+            -o-transition: all 4s linear;
+            transition: all 4s linear;
+        }
+
+    </style>
+</head>
+<body>
+<div class="show">
+    <div class="demo">
+        <div id="transBox" class="trans_box">
+            <div class="trans_list ease">ease</div>
+            <div class="trans_list ease_in">ease-in</div>
+            <div class="trans_list ease_out">ease-out</div>
+            <div class="trans_list ease_in_out">ease-in-out</div>
+            <div class="trans_list linear">linear</div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="../css/js/hl_all.js"></script>
+<script type="text/javascript">
+//    DlHighlight.HELPERS.highlightByName("code", "pre");
+//
+//    var $ = function(id) {
+//        return document.getElementById(id);
+//    }, $isIe6 = function() {
+//        return window.XMLHttpRequest? false : true;
+//    }();
+//    if ($isIe6) {
+//        var oTrans = $("transBox");
+//        oTrans.onmouseover = function() {
+//            this.className = "trans_box trans_box_hover";
+//        };
+//        oTrans.onmouseout = function() {
+//            this.className = "trans_box";
+//        };
+//    }
+</script>
+</body>
+</html>
