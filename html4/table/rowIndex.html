@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTMLTableRowElement.rowIndex</title>
+</head>
+
+<body>
+  <p>
+    The HTMLTableRowElement.rowIndex read-only property represents the position of a row in relation to the whole &lt;table>.
+  </p>
+  <p>
+    Even when the &lt;thead>, &lt;tbody>, and &lt;tfoot> elements are out of order in the HTML, browsers render the table in the right order. Therefore the rows count from &lt;thead> to &lt;tbody>, from &lt;tbody> to &lt;tfoot>.
+  </p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Item</th>
+        <th>Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Bananas</td>
+        <td>$2</td>
+      </tr>
+      <tr>
+        <td>Oranges</td>
+        <td>$8</td>
+      </tr>
+      <tr>
+        <td>Top Sirloin</td>
+        <td>$20</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td>Total</td>
+        <td>$30</td>
+      </tr>
+    </tfoot>
+  </table>
+
+  <script>
+    let rows = document.querySelectorAll('tr');
+
+    rows.forEach((row) => {
+      let z = document.createElement("td");
+      z.textContent = `(row #${row.rowIndex})`;
+      row.appendChild(z);
+    });
+  </script>
+</body>
+
+</html>
