@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>EventUtil</title>
+</head>
+<body>
+<input type="text" name="test" id="t1"/>
+<button id="btn1">点击事件</button>
+<script>
+    /*element代表元素，type代表事件类型，handler代表事件被触发时调用的方法 */
+    var EventUtil = {
+        addHandler: function (element, type, handler) {
+            if (element.addEventListener) {
+                element.addEventListener(type, handler, false);
+            } else if (element.attachEvent) {
+                element.attachEvent("on" + type, handler);
+            } else {
+                element["on" + type] = handler;
+            }
+        },
+        preventDefault: function (event) {
+            if (event.preventDefault) {
+                event.preventDefault();
+            } else {
+                event.returnValue = false;
+            }
+        }
+    };
+
+    EventUtil.addHandler(document.getElementById('btn1'), 'click', function() {
+      alert(1);
+    });
+</script>
+</body>
+</html>

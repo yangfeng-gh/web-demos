@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>方法借用</title>
+    <script type="text/javascript">
+        onload = function() {
+            var ul1 = document.getElementById('ul1');
+            // 仅包含元素节点
+            // console.log(ul1.children);
+            // 包含元素节点及文本节点（回车换行作为一个文本节点）
+            var lis = ul1.children;
+            Array.prototype.forEach.call(lis, function(item) {
+                console.log(item.nodeName);
+            })
+        }
+    </script>
+</head>
+<body>
+    <ul id="ul1">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</body>
+</html>

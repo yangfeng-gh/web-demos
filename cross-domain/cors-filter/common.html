@@ -1,84 +1,84 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
+
 <head>
   <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
   <title>common servlet</title>
-  <script src="../../../lib/js/jquery-1.8.3.js"></script>
-  <script src="../../../lib/js/jquery.form.js"></script>
+  <script src="../../static/js/jquery-1.10.2.js"></script>
+  <script src="../../static/js/jquery.form.js"></script>
 </head>
+
 <body>
-<div class="login">
-  <form id="login-form" action="">
-    <ul>
-      <li><label for="username">用户名：</label> <input type="text"
-                                                    id="username" name="username"></li>
-      <li><label for="password">密码： </label> <input type="text"
-                                                    id="password" name="password"></li>
-      <li><label for="code">验证码：</label> <input type="text" id="code"
-                                                name="code"></li>
-      <li><textarea cols="37" rows="5" id="result"></textarea></li>
-      <li>
-        <button type="submit">登录</button>
-      </li>
-    </ul>
-  </form>
-</div>
-<div id="result2"></div>
+  <div class="login">
+    <form id="login-form" action="">
+      <ul>
+        <li><label for="username">用户名：</label> <input type="text" id="username" name="username"></li>
+        <li><label for="password">密码： </label> <input type="text" id="password" name="password"></li>
+        <li><label for="code">验证码：</label> <input type="text" id="code" name="code"></li>
+        <li><textarea cols="37" rows="5" id="result"></textarea></li>
+        <li>
+          <button type="submit">登录</button>
+        </li>
+      </ul>
+    </form>
+  </div>
+  <div id="result2"></div>
 
-<script>
-  // 这样的方式掩盖了form的功能，使它成为了变相的ajax
-  /*
-    $(function() {
-        $('#login-form').submit(function() {
-            $.ajax({
-                url : '${pageContext.request.contextPath}/common',
-                data : $('#login-form').serialize(),
-                dataType : 'json',
-                type : 'post',
-                success : function(data, textStatus, jqXHR) {
-                    $('#result').val(JSON.stringify(data));
-                },
-                error : function(jqXHR, textStatus, errorThrown) {
-                    console.log(textStatus);
-                }
-            });
-            return false;
-        });
-    })
-    */
-  //
-  $(document).ready(function () {
-    var options = {
-      target: '#result2', //指明页面中由服务器响应进行更新的元素。元素的值可能被指定为一个jQuery选择器字符串，一个jQuery对象，或者一个DOM元素。
-      url: '${pageContext.request.contextPath}/common',
-      type: 'post',
-      // dataType: 'json', // target只在没有指定dataType时有效,调用$('#result2').html()
-      iframe: false,
-      clearForm: false,
-      resetForm: false,
-      beforeSerialize: function (form, options) {
-      },
-      beforeSubmit: function (arr, from, options) {
-      },
-      success: function (data, statusText, xhr) {
-      },
-      error: function (data) {
-        alert(data.message);
-      },
-      // $.ajax options can be used here too, for example:
-      timeout: 3000
-    }
+  <script>
+    // 这样的方式掩盖了form的功能，使它成为了变相的ajax
     /*
-        $('#login-form').ajaxForm(options).submit(function() {
-            return false;
-        })
-        */
+      $(function() {
+          $('#login-form').submit(function() {
+              $.ajax({
+                  url : '${pageContext.request.contextPath}/common',
+                  data : $('#login-form').serialize(),
+                  dataType : 'json',
+                  type : 'post',
+                  success : function(data, textStatus, jqXHR) {
+                      $('#result').val(JSON.stringify(data));
+                  },
+                  error : function(jqXHR, textStatus, errorThrown) {
+                      console.log(textStatus);
+                  }
+              });
+              return false;
+          });
+      })
+      */
+    //
+    $(document).ready(function () {
+      var options = {
+        target: '#result2', //指明页面中由服务器响应进行更新的元素。元素的值可能被指定为一个jQuery选择器字符串，一个jQuery对象，或者一个DOM元素。
+        url: '${pageContext.request.contextPath}/common',
+        type: 'post',
+        // dataType: 'json', // target只在没有指定dataType时有效,调用$('#result2').html()
+        iframe: false,
+        clearForm: false,
+        resetForm: false,
+        beforeSerialize: function (form, options) {
+        },
+        beforeSubmit: function (arr, from, options) {
+        },
+        success: function (data, statusText, xhr) {
+        },
+        error: function (data) {
+          alert(data.message);
+        },
+        // $.ajax options can be used here too, for example:
+        timeout: 3000
+      }
+      /*
+          $('#login-form').ajaxForm(options).submit(function() {
+              return false;
+          })
+          */
 
-    $('#login-form').submit(function () {
-      $(this).ajaxSubmit(options);
-      return false;
+      $('#login-form').submit(function () {
+        $(this).ajaxSubmit(options);
+        return false;
+      })
     })
-  })
-</script>
+  </script>
 </body>
+
 </html>

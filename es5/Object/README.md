@@ -1,0 +1,14 @@
+## es5中新增的对象方法
+> Object.getPrototypeOf
+> Object.getOwnPropertyDescriptor
+> Object.getOwnPropertyNames
+> Object.create
+> Object.defineProperty
+> Object.defineProperties
+> Object.seal
+> Object.freeze
+> Object.preventExtensions
+> Object.isSealed
+> Object.isFrozen
+> Object.isExtensible
+> Object.keys

@@ -1,0 +1,1 @@
+{"version":3,"sources":["module1.es6"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;AAAA,MAAM,IAAI;AACR,OAAG,CADK;AAER,OAAG;AAFK,GAAV;;AAKO,MAAM,+CACR,CADQ;AAEX,OAAG;AAFQ,IAAN","file":"module1.js","sourcesContent":["const o = {\r\n  a: 1,\r\n  b: 2\r\n};\r\n\r\nexport const def =  {\r\n  ...o,\r\n  c: 3\r\n};"]}
