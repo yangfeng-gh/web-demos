@@ -1,25 +1,88 @@
 <!DOCTYPE html>
 <html lang="zh-cmn-Hans">
+
 <head>
-<meta charset="utf-8" />
-<title>text-overflow_CSS参考手册_web前端开发参考手册系列</title>
-<meta name="author" content="Joy Du(飘零雾雨), dooyoe@gmail.com, www.doyoe.com" />
-<style>
-.test li{margin-top:10px;}
-.test .clip p{overflow:hidden;width:200px;white-space:nowrap;text-overflow:clip;}
-.test .ellipsis span{overflow:hidden;width:200px;white-space:nowrap;text-overflow:ellipsis;}
-</style>
+  <meta charset="utf-8" />
+  <title>text-overflow_CSS参考手册_web前端开发参考手册系列</title>
+  <meta name="author" content="Joy Du(飘零雾雨), dooyoe@gmail.com, www.doyoe.com" />
+  <style>
+    .demo p {
+      overflow: hidden;
+      width: 200px;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    .demo2 {
+      width: 200px;
+      white-space: nowrap;
+    }
+
+    .demo2 p {
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .test li {
+      margin-top: 10px;
+    }
+
+    .test .clip p {
+      overflow: hidden;
+      width: 200px;
+      white-space: nowrap;
+      text-overflow: clip;
+    }
+
+    .test .ellipsis p {
+      overflow: hidden;
+      width: 200px;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    .test .multi-line-ellipsis p {
+      word-break: break-all;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      width: 250px;
+      height: 200px;
+    }
+  </style>
 </head>
+
 <body>
-<ul class="test">
-	<li class="clip">
-		<strong>clip: 直接将溢出的文字裁剪</strong>
-		<p>测试用文字测试用文字测试用文字测试用文字测试用文字测试用文字</p>
-	</li>
-	<li class="ellipsis">
-		<strong>ellipsis: 将溢出的文字显示省略标记（...）</strong>
-		<span>测试用文字测试用文字测试用文字测试用文字测试用文字测试用文字</span>
-	</li>
-</ul>
+  <div class="demo">
+    <p>这是一句非常非常长的话，被用来做text-overflow属性测试。</p>
+  </div>
+  <pre>
+    case 1，我们将text-overflow生效必备的3个属性： <' overflow '> , <' width '> 和 <' white-space '> 都直接定义在了内联内容的父级块容器上
+  </pre>
+
+  <div class="demo2">
+    <p>这是一句非常非常长的话，被用来做text-overflow属性测试。</p>
+  </div>
+  <pre>
+    case 2，我们将 <' width '> 和 <' white-space '> 定义在了更外层的块容器上，但case 1和case 2的效果是一样的。因为这2个属性可以被继承
+  </pre>
+
+  <ul class="test">
+    <li class="clip">
+      <strong>clip: 直接将溢出的文字裁剪</strong>
+      <p>测试用文字测试用文字测试用文字测试用文字测试用文字测试用文字</p>
+    </li>
+    <li class="ellipsis">
+      <strong>ellipsis: 将溢出的文字显示省略标记（...）</strong>
+      <p>单行测试文字溢出省略，单行测试文字溢出省略，单行测试文字溢出省略</p>
+    </li>
+    <li class="multi-line-ellipsis">
+      <strong>ellipsis: 将溢出的文字显示省略标记（...）</strong>
+      <p>多行测试文字溢出省略，多行测试文字溢出省略，多行测试文字溢出省略</p>
+    </li>
+  </ul>
 </body>
+
 </html>

@@ -1,0 +1,152 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>ajaxForm</title>
+    <script src="../../static/js/jquery-1.10.2.js"></script>
+    <script src="../../static/js/jquery.form.js"></script>
+</head>
+<body>
+
+<h3>The following code controls the HTML form beneath it.
+    It uses ajaxForm to bind the form and demonstrates how to use pre- and post-submit callbacks.</h3>
+
+<form id="myForm1" method="get" enctype="application/x-www-form-urlencoded" action="http://a.yf.com:8070/cors-demo/common">
+    <div>
+        <input type="hidden" name="Hidden" value="hiddenValue">
+        <table>
+            <tbody>
+            <tr>
+                <td>Name: </td>
+                <td><input type="text" id="username" name="username"></td>
+            </tr>
+            <tr>
+                <td>Password: </td>
+                <td><input type="text" id="password" name="password"></td>
+            </tr>
+            <tr>
+                <td>Multiple: </td>
+                <td>
+                    <select name="multiple" id="multiple" multiple="multiple">
+                        <optgroup label="Group 1">
+                            <option value="1">one</option>
+                            <option value="2">two</option>
+                            <option value="3">three</option>
+                        </optgroup>
+                        <optgroup label="Group 2">
+                            <option value="4">four</option>
+                            <option value="5">five</option>
+                            <option value="6">six</option>
+                        </optgroup>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Single: </td>
+                <td>
+                    <select name="single" id="single">
+                        <option value="1">one</option>
+                        <option value="2">two</option>
+                        <option value="3">three</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Single2: </td>
+                <td>
+                    <select name="single2" id="single2">
+                        <optgroup label="Group 1">
+                            <option value="a">A</option>
+                            <option value="b">B</option>
+                            <option value="c">C</option>
+                        </optgroup>
+                        <optgroup label="Group 2">
+                            <option value="d">D</option>
+                            <option value="e">E</option>
+                            <option value="f">F</option>
+                        </optgroup>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Check: </td>
+                <td>
+                    <input type="checkbox" name="check">
+                    <input type="checkbox" name="check">
+                    <input type="checkbox" name="check">
+                </td>
+            </tr>
+            <tr>
+                <td>Text: </td>
+                <td>
+                    <textarea name="text" id="text" cols="30" rows="10"></textarea>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <input type="reset" value="reset">
+        <input type="submit" value="submit">
+    </div>
+</form>
+
+<div id="output1"></div>
+
+<script>
+    // prepare the form when the DOM is ready
+    $(document).ready(function() {
+        var options = {
+            target:        '#output1',   // target element(s) to be updated with server response
+            beforeSubmit:  showRequest,  // pre-submit callback
+            success:       showResponse  // post-submit callback
+
+            // other available options:
+            //url:       url         // override for form's 'action' attribute
+            //type:      type        // 'get' or 'post', override for form's 'method' attribute
+            //dataType:  null        // 'xml', 'script', or 'json' (expected server response type)
+            //clearForm: true        // clear all form fields after successful submit
+            //resetForm: true        // reset the form after successful submit
+
+            // $.ajax options can be used here too, for example:
+            //timeout:   3000
+        };
+
+        // bind form using 'ajaxForm'
+        $('#myForm1').ajaxForm(options);
+    });
+
+    // pre-submit callback
+    function showRequest(formData, jqForm, options) {
+        // formData is an array; here we use $.param to convert it to a string to display it
+        // but the form plugin does this for you automatically when it submits the data
+        var queryString = $.param(formData);
+
+        // jqForm is a jQuery object encapsulating the form element.  To access the
+        // DOM element for the form do this:
+        // var formElement = jqForm[0];
+
+        alert('About to submit: \n\n' + queryString);
+
+        // here we could return false to prevent the form from being submitted;
+        // returning anything other than false will allow the form submit to continue
+        return true;
+    }
+
+    // post-submit callback
+    function showResponse(responseText, statusText, xhr, $form)  {
+        // for normal html responses, the first argument to the success callback
+        // is the XMLHttpRequest object's responseText property
+
+        // if the ajaxForm method was passed an Options Object with the dataType
+        // property set to 'xml' then the first argument to the success callback
+        // is the XMLHttpRequest object's responseXML property
+
+        // if the ajaxForm method was passed an Options Object with the dataType
+        // property set to 'json' then the first argument to the success callback
+        // is the json data object returned by the server
+
+        alert('status: ' + statusText + '\n\nresponseText: \n' + responseText +
+            '\n\nThe output div should have already been updated with the responseText.');
+    }
+</script>
+</body>
+</html>

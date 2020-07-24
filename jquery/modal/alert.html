@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jquery弹框提示</title>
+  <link rel="stylesheet" href="../../static/css/jquery-impromptu.css">
+  <!-- <link href="https://cdn.bootcdn.net/ajax/libs/jquery-impromptu/6.2.3/jquery-impromptu.css" rel="stylesheet"> -->
+  <!-- <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script> -->
+  <!-- <script src="https://cdn.bootcdn.net/ajax/libs/jquery-impromptu/6.2.3/jquery-impromptu.js"></script> -->
+</head>
+
+<body>
+  <h3>jquery弹框提示</h3>
+
+  <script src="../../static/js/jquery-1.10.2.js"></script>
+  <script src="../../static//js/jquery-impromptu.js"></script>
+
+  <script>
+    $.prompt.setDefaults({
+      prefix: 'myPrompt',
+      show: 'slideDown',
+      buttons: { Ok: true, Cancel: false },
+      focus: 1
+    });
+
+    $.prompt("Proceeding may be good for your site..", {
+      title: "Are you Ready?",
+      buttons: { "Yes, I'm Ready": true, "No, Lets Wait": false }
+    });
+  </script>
+</body>
+
+</html>

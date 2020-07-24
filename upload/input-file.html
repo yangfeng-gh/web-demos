@@ -12,19 +12,20 @@
   <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg" onclick="handleClick(this)" oninput="handleInput(this)" onchange="handleChange(this)">
 
   <script>
-    function handleClick(e) {
+    function handleClick(elem) {
       console.log('click')
-      console.log(e)
+      console.log(Object.prototype.toString.call(elem))
     }
 
-    function handleInput(e) {
+    function handleInput(elem) {
       console.log('input')
-      console.log(e)
+      console.log(elem)
     }
 
-    function handleChange(e) {
+    function handleChange(elem) {
       console.log('change')
-      console.log(e)
+      console.log(Object.prototype.toString.call(elem))
+      console.log(elem.files)
     }
   </script>
 </body>

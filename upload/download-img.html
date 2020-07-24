@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>借助Base64实现任意文件下载</title>
+</head>
+
+<body>
+
+  <button>借助Base64实现任意文件下载</button>
+
+  <script>
+    function getBase64FromImageUrl(URL) {
+      var img = new Image();
+      img.src = URL;
+      img.onload = function () {
+
+        var canvas = document.createElement("canvas");
+        canvas.width = this.width;
+        canvas.height = this.height;
+
+        var ctx = canvas.getContext("2d");
+        ctx.drawImage(this, 0, 0);
+
+        var dataURL = canvas.toDataURL("image/png");
+
+        alert(dataURL.replace(/^data:image\/(png|jpg);base64,/, ""));
+
+      };
+    }
+
+    /**
+     * By using fabric js we can solve this security error issue in IE.
+     */
+    function getBase64FromImageUrl(URL) {
+        var canvas  = new fabric.Canvas('c');
+        var img = new Image();
+        img.onload = function() {
+            var canvas1 = document.createElement("canvas");
+            canvas1.width = this.width;
+            canvas1.height = this.height;
+            var ctx = canvas.getContext('2d');
+            ctx.drawImage(this, 0, 0);
+            var dataURL = canvas.toDataURL({format: "png"});
+        };
+        img.src = URL;
+    }
+
+    var funDownload = function (domImg, filename) {
+      // 创建隐藏的可下载链接
+      var eleLink = document.createElement('a');
+      eleLink.download = filename;
+      eleLink.style.display = 'none';
+      // 图片转base64地址
+      var canvas = document.createElement('canvas');
+      var cxt = canvas.getContext('2d');
+      var width = domImg.naturalWidth;
+      var height = domImg.naturalHeight;
+      cxt.drawImage(domImg, 0, 0);
+      // 如果是PNG图片，则canvas.toDataURL('image/png')
+      // eleLink.href = canvas.toDataURL('image/jpeg');
+      var dataUrl = canvas.toDataURL('image/png');
+      console.log(dataUrl);
+      eleLink.href = dataUrl;
+      // 触发点击
+      document.body.appendChild(eleLink);
+      eleLink.click();
+      // 然后移除
+      document.body.removeChild(eleLink);
+    };
+
+    var btn = document.querySelector('button');
+    btn.addEventListener('click', function () {
+
+      // var imgUrl = 'http://file.ei-link.com/fmsf/meetFile/ajcb779d/437e6613-978f-4ebe-8e7d-6dee37e00a8d.png?key=25e34a27985610abaaad729f9b62c6ee&id=o24xfseo'
+
+      var imgUrl = 'http://pic.c-ctrip.com/VacationH5Pic/mice/wechat/ewm01.png';
+
+      var img = new Image();
+      var timestamp = new Date().getTime();
+      img.src = imgUrl + "?" + timestamp;
+      // img.crossOrigin = 'Anonymous'; // 效果同下
+      img.setAttribute("crossOrigin", 'Anonymous');
+      img.onload = function () {
+        funDownload(img, 'zt_1.png');
+      }
+
+      var img2 = document.createElement('img');
+      img2.src = imgUrl;
+      document.body.appendChild(img2);
+
+    })
+  </script>
+</body>
+
+</html>

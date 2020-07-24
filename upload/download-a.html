@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>a标签download属性</title>
+</head>
+<body>
+
+  <script>
+    var isSupportDownload = 'download' in document.createElement('a');
+    var p = document.createElement('p');
+    p.innerText = isSupportDownload ? 'a标签支持download属性' : 'a标签不支持download属性'
+    document.body.appendChild(p);
+  </script>
+
+  <h3>预览</h3>
+  <a href="../static//images/download-attribute.png" target="_blank">download-attribute</a>
+  <h3>下载</h3>
+  <a href="../static//images/download-attribute.png" target="_blank" download>download-attribute</a>
+  <h3>指定下载文件名</h3>
+  <a href="../static//images/download-attribute.png" target="_blank" download="download-attribute-caniuse">download-attribute</a>
+
+  <h3>跨域下载</h3>
+  <a href="http://file.ei-link.com/fmsf/meetFile/ajcb779d/437e6613-978f-4ebe-8e7d-6dee37e00a8d.png?key=25e34a27985610abaaad729f9b62c6ee&id=o24xfseo">download-attribute</a>
+
+  <h3>跨域下载2</h3>
+  <a href="http://pic.c-ctrip.com/VacationH5Pic/mice/wechat/ewm01.png" download>download-attribute</a>
+</body>
+</html>

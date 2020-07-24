@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>下载</title>
+</head>
+<body>
+  <div style="display: none">
+    <iframe name="export_target"></iframe>
+    <form id="exportForm" target="export_target" action="http://pic.c-ctrip.com/VacationH5Pic/mice/wechat/ewm01.png" method="get" enctype="application/x-www-form-urlencoded">
+      <!-- <input type="submit" id="submitBtn"> -->
+    </form>
+  </div>
+  <button onclick="handleClick()">下载</button>
+
+  <script>
+    function handleClick() {
+      console.log(document.forms.exportForm);
+      console.log(document.forms[0]);
+
+      const hiddenForm = document.getElementById('exportForm');
+      const submitBtn = document.getElementById('submitBtn');
+      console.log(hiddenForm);
+      hiddenForm.submit();
+    }
+  </script>
+</body>
+</html>
