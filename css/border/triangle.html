@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>css简单实现带箭头的边框</title>
+  </head>
+  <body>
+    <h3>实现由四个三角形组成的正方形</h3>
+    <style>
+      .triangle {
+        width: 0;
+        height: 0;
+        border: 100px solid red;
+        border-right-color: green;
+        border-left-color: blue;
+        border-top-color: black;
+      }
+    </style>
+    <div class="triangle"></div>
+    <br />
+
+    <h3>向下三角形</h3>
+
+    <style>
+      .triangle-bottom {
+        width: 0;
+        height: 0;
+        border: 100px solid transparent;
+        border-top-color: red;
+      }
+    </style>
+    <div class="triangle-bottom"></div>
+    <br />
+
+    <h3>将三角形放入边框中</h3>
+    <style>
+      .border-triangle {
+        width: 100px;
+        height: 50px;
+        border: 1px solid red;
+        position: relative;
+      }
+
+      .border-triangle:before {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 0;
+        border: 4px solid transparent;
+        border-top-color: red;
+        left: 50%;
+        margin-left: -4px;
+        bottom: -8px;
+      }
+    </style>
+    <div class="border-triangle"></div>
+    <br />
+
+    <h3>带箭头的边框</h3>
+    <style>
+      .border-triangle-bottom {
+          width: 300px;
+          height: 44px;
+          border: 1px solid #1d9cd6;
+          position: relative;
+          border-radius: 4px;
+      }
+
+      .border-triangle-bottom:after,
+      .border-triangle-bottom:before {
+          content: "";
+          position: absolute;
+          width: 0;
+          height: 0;
+          border: 4px solid transparent;
+          border-top-color: #1d9cd6;
+          left: 50%;
+          margin-left: -4px;
+          bottom: -8px;
+      }
+
+      .border-triangle-bottom:after {
+          border-top-color: #fff;
+          bottom: -7px;
+      }
+  </style>
+  <div class="border-triangle-bottom">
+    <a href="">请离</a>
+    <a href="">设为主持人</a>
+    <a href="">静音</a>
+  </div>
+  </body>
+</html>

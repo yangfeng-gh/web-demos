@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>菜鸟教程(runoob.com)</title>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("#add").click(function () {
+          $("p").toggleClass("main", true);
+        });
+        $("#remove").click(function () {
+          $("p").toggleClass("main", false);
+        });
+      });
+    </script>
+    <style>
+      .main {
+        font-size: 120%;
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <p>这是一个段落。</p>
+    <p class="main">这是另一个段落。</p>
+    <button id="add">添加"main"类</button>
+    <button id="remove">移除"main"类</button>
+  </body>
+</html>

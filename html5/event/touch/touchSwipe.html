@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>基于touchSwipe微信手机端微场景HTML5页面特效（适用于PC端)</title>
+  </head>
+  <body>
+    <div id="main" class="main">
+      <img id="main_top" src="img/top.png" />
+
+      <section
+        id="sec01"
+        class="main"
+        style="top: 0%; background: red"
+      ></section>
+
+      <section id="sec02" class="main" style="background: yellow"></section>
+
+      <section id="sec03" class="main" style="background: blue"></section>
+      <img id="main_bottom" src="img/top.png" />
+    </div>
+
+    <script src="../../../static/zepto/zepto-1.2.0.js"></script>
+    <script type="text/javascript">
+      var init = new Object();
+      init.thisId = 0;
+      var reg = new RegExp("(^|&)page=([^&]*)(&|$)");
+      var r = window.location.search.substr(1).match(reg);
+      if (r != null) {
+        init.thisId = 2;
+        $("#sec01,#sec02").css("top", "-100%");
+        $("#sec03").css("top", "0");
+      }
+      $(window).load(function () {
+        $("#loading").fadeOut();
+        setTimeout(function () {
+          $("#main").fadeIn();
+        }, 1000);
+        //car_sec01
+        setTimeout(function () {
+          $("#car_01").show();
+          TweenLite.from($("#car_01"), 1, {
+            x: "100",
+            y: "10",
+            scale: 0.5,
+            ease: Back.easeOut,
+          });
+          TweenLite.to($("#car_01"), 1, { x: "10", y: "20", scale: 1.0 });
+        }, 200);
+      });
+
+      /**
+       * 滑动锁 	true为解锁状态可以滑动
+       * 		false为锁定状态不能滑动
+       */
+      init.swipeLock = true;
+      /*非必须
+                        init.url = '与服务器数据交互的地址';
+			init.openid = '';
+                          */
+      init.swipeSpeed = 0.8;
+      init.height = document.documentElement.clientHeight;
+      var tl = new TimelineLite();
+      TweenMax.to($("#main .main").eq(init.thisId), init.swipeSpeed, {
+        top: "0%",
+      });
+      init.body = function () {};
+      $("#main").swipe({
+        swipeStatus: function (
+          event,
+          phase,
+          direction,
+          distance,
+          duration,
+          fingerCount
+        ) {
+          $("#sec011").html(distance);
+          if (fingerCount > 1) return;
+          if (distance <= 75) return;
+          if (!init.swipeLock) return;
+
+          if (direction == "up") {
+            //向上滑
+            if (init.thisId >= 0 && init.thisId < $("#main .main").length - 1) {
+              $("#main .main")
+                .eq(init.thisId)
+                .css("top", 75 - distance + "px");
+              $("#main .main")
+                .eq(init.thisId + 1)
+                .css("top", init.height + 75 - distance + "px");
+            } else {
+              $("#main_bottom").css("height", distance - 75);
+              $("#main_bottom").css(
+                "opacity",
+                (distance - 75) / (init.height * 0.15)
+              );
+            }
+          }
+          if (direction == "down") {
+            //向下滑
+            if (init.thisId > 0 && init.thisId < $("#main .main").length) {
+              $("#main .main")
+                .eq(init.thisId)
+                .css("top", distance - 75 + "px");
+              $("#main .main")
+                .eq(init.thisId - 1)
+                .css("top", distance - 75 - init.height + "px");
+            } else {
+              $("#main_top").css("height", distance - 75);
+              $("#main_top").css(
+                "opacity",
+                (distance - 75) / (init.height * 0.15)
+              );
+            }
+          }
+        },
+        swipe: function (event, direction, distance, duration, fingerCount) {
+          if (fingerCount > 1) return;
+          if (distance < 10) return;
+          if (!init.swipeLock) return;
+          if (direction == "up") {
+            //init.swipeLock = false;
+            if (init.thisId >= 0 && init.thisId < $("#main .main").length - 1) {
+              try {
+                TweenMax.to($("#main .main").eq(init.thisId), init.swipeSpeed, {
+                  top: "-100%",
+                });
+                TweenMax.to(
+                  $("#main .main").eq(init.thisId + 1),
+                  init.swipeSpeed,
+                  { top: "0%" }
+                );
+                init.thisId++;
+                setTimeout(function () {
+                  init.swipeLock = true;
+                }, init.swipeSpeed * 1000);
+              } catch (e) {
+                console.log(e);
+              }
+            } else {
+              if (init.thisId == $("#main .main").length - 1) {
+                TweenMax.to("#main_bottom", init.swipeSpeed, {
+                  height: "5%",
+                  opacity: "0",
+                });
+              }
+            }
+          }
+          if (direction == "down") {
+            //init.swipeLock = false;
+            if (init.thisId > 0 && init.thisId < $("#main .main").length) {
+              try {
+                init.swipeLock = false;
+                TweenMax.to($("#main .main").eq(init.thisId), init.swipeSpeed, {
+                  top: "100%",
+                });
+                TweenMax.to(
+                  $("#main .main").eq(init.thisId - 1),
+                  init.swipeSpeed,
+                  { top: "0%" }
+                );
+                init.thisId--;
+                setTimeout(function () {
+                  init.swipeLock = true;
+                }, init.swipeSpeed * 1000);
+              } catch (e) {
+                console.log(e);
+              }
+            } else {
+              if (init.thisId == 0) {
+                TweenMax.to("#main_top", init.swipeSpeed, {
+                  height: "5%",
+                  opacity: "0",
+                });
+              }
+            }
+          }
+        },
+      });
+      /**
+			 * 阻止触摸
+			document.addEventListener('touchmove', function (event) {
+				event.preventDefault();
+			}, false);
+			 */
+    </script>
+  </body>
+</html>

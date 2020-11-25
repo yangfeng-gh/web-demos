@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="test1" style="position: fixed"></div>
+
+    <div id="test2"></div>
+
+    <div id="div0" style="position: absolute">
+      <div id="div1" style="position: absolute">
+        <div id="test3"></div>
+      </div>
+    </div>
+
+    <script>
+      /*
+      【1】元素自身有fixed定位，父元素不存在定位，则offsetParent的结果为null（firefox中为：body，其他浏览器返回为null）
+      */
+      var test1 = document.getElementById('test1');
+      console.log('test1 offsetParent: ' + test1.offsetParent);
+      /*
+      【2】元素自身无fixed定位，且父元素也不存在定位，offsetParent为<body>元素
+      */
+      var test2 = document.getElementById('test2');
+      console.log('test2 offsetParent: ' + test2.offsetParent);
+      /*
+      【3】元素自身无fixed定位，且父元素存在定位，offsetParent为离自身最近且经过定位的父元素
+      */
+      var test3 = document.getElementById('test3');
+      console.log('test3 offsetParent: ' + test3.offsetParent);
+      /*
+      【4】<body>元素的offsetParent是null
+      */
+      console.log('body offsetParent: ' + document.body.offsetParent);//null
+    </script>
+  </body>
+</html>
